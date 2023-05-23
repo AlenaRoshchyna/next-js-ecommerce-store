@@ -1,0 +1,16 @@
+.Image {
+  z-index: 0;
+  height: 500px;
+
+  // background-position: center;
+  // background-repeat: no-repeat;
+  // background-size: cover;
+  // position: relative;
+}
+
+.landingText {
+  font-size: 1.5rem;
+  position: relative;
+  z-index: 1;
+  color: rgb(255, 255, 255);
+}
