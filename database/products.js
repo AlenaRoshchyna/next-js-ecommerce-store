@@ -1,67 +1,40 @@
+const dreamDescriptionA =
+  'Mapping the Uncharted Territories of Dreams: This thought-provoking dream represents the boundless possibilities of the ReverieRealm. It features a captivating labyrinth, constructed with mirrors that reflect infinite images of the viewer. The dream inspire viewers to delve into the unexplored territories of their own dreams, gaining a deeper understanding of themselves and their subconscious mind.';
+const dreamDescriptionB =
+  'Where Whispers Shape Dreams: This evocative dream immerses viewers in an interactive reality-like environment. As they enter the dimly lit space, soft whispers surround them, lulling them into a state of tranquility. The dream features a canopy of delicate, luminescent fibers that gently sway overhead, symbolizing the transformative power of whispers during sleep. Allow whispers to unfold your dream with a sense of serenity and harmony!';
+const dreamDescriptionC =
+  'A Journey Through Ethereal Realms: In this captivating dream, the viewer is transported into a world of swirling colors and surreal landscapes. It captures its vibrant hues and fluid brushstrokes. The dreamer, depicted as a figure gracefully floating amidst the ethereal scenery, experiences a seamless blend of reality and imagination. The dream evokes a sense of wonder and invites viewers to explore the limitless possibilities of their own dreams.';
+const dreamDescriptionD =
+  'Portal to an Enchanted Realm: Step into a world of enchantment with the FantasiaDreamer. The room is adorned with intricate, handcrafted sculptures that depict mystical creatures, vibrant flora, and otherworldly landscapes. Soft, ambient music fills the air, creating a harmonious atmosphere. This immersive experience ignites the senses and invites viewers to embrace the whimsical nature of their dreams.';
+
 export const products = [
   {
     id: 1,
-    name: 'Radiance',
-    category: 'flowers',
-    price: '99,49',
-    description:
-      'A bouquet that captivates with its playful and imaginative arrangement of vibrant blooms.',
+    name: 'ReverieRealm',
+    category: 'dreams',
+    price: '50',
+    description: dreamDescriptionA,
   },
   {
     id: 2,
-    name: 'Bloom',
-    category: 'flowers',
-    price: '89,49',
-    description:
-      'A bouquet that bursts with a fusion of bold and vibrant blooms, creating a striking and energetic display.',
+    name: 'SlumberWhisper',
+    category: 'dreams',
+    price: '50',
+    description: dreamDescriptionB,
   },
   {
     id: 3,
-    name: 'Ethereal',
-    category: 'flowers',
-    price: '89,49',
-    description:
-      'A bouquet that brings a sense of calm and balance through its harmonious combination of delicate flowers.',
+    name: 'DreamScape',
+    category: 'dreams',
+    price: '50',
+    description: dreamDescriptionC,
   },
   {
     id: 4,
-    name: 'Whimsy',
-    category: 'flowers',
-    price: '89,49',
-    description:
-      'A bouquet that enchants with its soft and romantic blooms, evoking the ethereal beauty of twilight.',
-  },
-  {
-    id: 5,
-    name: 'Enchant',
-    category: 'flowers',
-    price: '109,49',
-    description:
-      'A bouquet that exudes confidence and sophistication, empowering the recipient with its exquisite and commanding presence.',
-  },
-  {
-    id: 6,
-    name: 'Bliss',
-    category: 'flowers',
-    price: '109,49',
-    description:
-      'A bouquet that embodies everlasting beauty and opulence, making a statement of grandeur and elegance.',
-  },
-  {
-    id: 7,
-    name: 'Euphoria',
-    category: 'flowers',
-    price: '109,49',
-    description:
-      'A bouquet that exudes timeless beauty and sophistication through its luxurious and refined floral selection.',
-  },
-  {
-    id: 8,
-    name: 'Tranquil',
-    category: 'flowers',
-    price: '109,49',
-    description:
-      'A bouquet that serenades the senses with its calming and delicate arrangement, creating a serene and peaceful ambiance.',
+    name: 'FantasiaDreamer',
+    category: 'dreams',
+    price: '50',
+    description: dreamDescriptionD,
   },
 ];
 export function getProductById(id) {

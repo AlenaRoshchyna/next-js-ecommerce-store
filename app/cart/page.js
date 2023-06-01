@@ -1,22 +1,54 @@
-import Link from 'next/link';
+import Image from 'next/image';
+import { getProductById } from '../../database/products';
+// import { getCookie } from '../../util/cookies';
+// import { parseJson } from '../../util/json';
+import { getQuantity } from '../products/[productId]/actions';
+import ChangeQuantityItem from './ChangeQuantityItem';
+import DeleteItems from './DeleteItems';
+import styles from './page.module.scss';
 
-// import styles from './cart.module.scss';
+export default async function CartPage() {
+  const productQuantity = await getQuantity();
 
-export default function CartPage() {
+  const productInCart = await Promise.all(
+    productQuantity.map(async (item) => {
+      // item is my product in cokies
+      const matchingProduct = await getProductById(Number(item.id));
+
+      return {
+        ...matchingProduct,
+        quantity: item.quantity,
+      };
+    }),
+  );
+
   return (
-    <div>
-      <div>Product</div>
-      <div>Name</div>
-      <div>Price</div>
-      <div>Quantity</div>
-      <div>Total</div>
+    <main>
+      <section className={styles.cartPage}>
+        {productInCart.map((product) => {
+          console.log(product);
+          return (
+            <div key={`product-${product.id}`} className={styles.productCart}>
+              <Image
+                alt=""
+                src={`/images/${product.name}.jpg`}
+                width={250}
+                height={250}
+              />
+              <div>{product.name}</div>
+              <div>{product.price}</div>
 
-      <h3>Cart Total</h3>
-      <h2>00, 00</h2>
-      <div>
-        <Link href="/products">Continue Shopping</Link>
-        <Link href="/checkout">Checkout</Link>
-      </div>
-    </div>
+              <form>
+                <ChangeQuantityItem product={product} />
+              </form>
+
+              <form>
+                <DeleteItems product={product} />
+              </form>
+            </div>
+          );
+        })}
+      </section>
+    </main>
   );
 }

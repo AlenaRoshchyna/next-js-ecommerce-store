@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { products } from '../../database/products';
+import styles from './page.module.scss';
 
 export const metadata = {
   title: 'Products',
@@ -12,26 +13,27 @@ export default function ProductsPage() {
   // const allCookies = cookies().getAll();
   // console.log(allCookies);
   return (
-    <main>
-      These are the products
-      {products.map((product) => {
-        return (
-          <div key={`product-div-${product.id}`}>
-            <Link
-              href={`/products/${product.id}`}
-              data-test-id="product-<product id>"
-            >
-              {product.name}
-            </Link>
-            <br />
-            <Image
-              src={`/images/${product.name}.jpg`}
-              width={100}
-              height={100}
-            />
-          </div>
-        );
-      })}
+    <main className={styles.main}>
+      <section className={styles.productsContainer}>
+        {products.map((product) => {
+          return (
+            <div key={`product-div-${product.id}`}>
+              <Image
+                src={`/images/${product.name}.jpg`}
+                width={172}
+                height={343}
+              />
+              <br />
+              <Link
+                href={`/products/${product.id}`}
+                data-test-id="product-<product id>"
+              >
+                {product.name}
+              </Link>
+            </div>
+          );
+        })}
+      </section>
     </main>
   );
 }

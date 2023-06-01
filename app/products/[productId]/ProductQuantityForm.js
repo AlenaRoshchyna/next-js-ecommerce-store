@@ -7,7 +7,7 @@ import { updateQuantity } from './actions';
 // import styles from './ProductQuantityForm.module.scss';
 
 export default function ProductQuantityForm(props) {
-  const [quantity, setQuantity] = useState('');
+  const [quantity, setQuantity] = useState(1);
   const router = useRouter();
 
   return (

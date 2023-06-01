@@ -1,0 +1,14 @@
+// .main {
+//   background-color: black;
+//   height: 100%;
+// }
+
+.productsContainer {
+  display: flex;
+  align-items: center;
+  background-color: black;
+  justify-content: center;
+  padding: 100px;
+  gap: 100px;
+  min-height: 100vh;
+}

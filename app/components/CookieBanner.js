@@ -1,8 +1,8 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { parseJson } from '../util/json';
-import { getLocalStorage, setLocalStorage } from '../util/localStorage';
+import { parseJson } from '../../util/json';
+import { getLocalStorage, setLocalStorage } from '../../util/localStorage';
 import style from './CookieBanner.module.scss';
 
 export function CookieBanner() {
@@ -23,7 +23,7 @@ export function CookieBanner() {
         areCookiesTermsAccepted ? style.closed : style.open
       }`}
     >
-      <div>This is the cookie Police. Please accept terms and conditions</div>
+      <div>This is the cookie Policy. Please accept terms and conditions</div>
       <button
         className={style.button}
         onClick={() => {

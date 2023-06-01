@@ -1,0 +1,15 @@
+.cartPage {
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(255, 255, 255);
+  margin-top: 30px;
+  padding-top: 100px;
+  min-height: 100vh;
+  row-gap: 30px;
+}
+
+.productCart {
+  display: flexbox;
+  flex-direction: row;
+  gap: 30px;
+}
