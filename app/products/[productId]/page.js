@@ -5,12 +5,21 @@ import styles from './page.module.scss';
 import ProductQuantityForm from './ProductQuantityForm';
 
 export const dynamic = 'force-dynamic';
-export default function ProductPage({ params }) {
-  const singleProduct = getProductById(Number(params.productId)); // Convert the string into a number
+
+export const metadata = {
+  title: 'Explore the dream',
+  description: 'Products',
+};
+
+export default async function ProductPage({ params }) {
+  const singleProduct = await getProductById(Number(params.productId)); // Convert the string into a number
+
   console.log(singleProduct);
+
   if (!singleProduct) {
     notFound();
   }
+
   return (
     <main className={styles.productPage}>
       <Image
@@ -21,7 +30,7 @@ export default function ProductPage({ params }) {
       />
       <h1>{singleProduct.name}</h1>
       <h5>{singleProduct.description}</h5>
-      <h6 data-test-id="product-price">{singleProduct.price}</h6>
+      <h6 data-test-id="product-price">Price: {singleProduct.price}</h6>
       <p>Quantity</p>
       <div>
         <ProductQuantityForm productId={singleProduct.id} />

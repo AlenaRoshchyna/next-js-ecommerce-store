@@ -1,18 +1,22 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import { getProductById } from '../../database/products';
-// import { getCookie } from '../../util/cookies';
-// import { parseJson } from '../../util/json';
 import { getQuantity } from '../products/[productId]/actions';
 import ChangeQuantityItem from './ChangeQuantityItem';
 import DeleteItems from './DeleteItems';
 import styles from './page.module.scss';
+
+export const metadata = {
+  title: 'Dreams',
+  description: 'Enter the world of new dreams',
+};
 
 export default async function CartPage() {
   const productQuantity = await getQuantity();
 
   const productInCart = await Promise.all(
     productQuantity.map(async (item) => {
-      // item is my product in cokies
+      // item is my product in cookies
       const matchingProduct = await getProductById(Number(item.id));
 
       return {
@@ -22,11 +26,20 @@ export default async function CartPage() {
     }),
   );
 
+  function calculateTotalPrice() {
+    return productInCart.reduce(
+      (total, item) => total + item.quantity * item.price,
+      0,
+    );
+  }
+  let subTotalProductPrice = 0;
+
   return (
     <main>
       <section className={styles.cartPage}>
         {productInCart.map((product) => {
-          console.log(product);
+          subTotalProductPrice = product.quantity * product.price;
+
           return (
             <div key={`product-${product.id}`} className={styles.productCart}>
               <Image
@@ -35,9 +48,11 @@ export default async function CartPage() {
                 width={250}
                 height={250}
               />
-              <div>{product.name}</div>
-              <div>{product.price}</div>
+              <div>Name: {product.name}</div>
+              <div>Price: {product.price}</div>
+              <div>Subtotal price: {subTotalProductPrice}</div>
 
+              {/* <div>{product.totalQuantity}</div> */}
               <form>
                 <ChangeQuantityItem product={product} />
               </form>
@@ -48,6 +63,15 @@ export default async function CartPage() {
             </div>
           );
         })}
+
+        <div>
+          Total price:
+          <span data-test-id="cart-total">{calculateTotalPrice()}</span>
+        </div>
+
+        {/* <Link href="/cart/checkout/" data-test-id="cart-checkout">
+          Checkout
+        </Link> */}
       </section>
     </main>
   );

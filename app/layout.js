@@ -10,6 +10,11 @@ import styles from './layout.module.scss';
 
 const inter = Inter({ subsets: ['latin'] });
 
+export const metadata = {
+  title: 'Dreams',
+  description: 'Enter the world of new dreams',
+};
+
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
@@ -37,7 +42,6 @@ export default function RootLayout({ children }) {
                 </Link>
               </li>
             </ul>
-            {/* {Math.floor(Math.random() * 10)} */}
           </nav>
         </header>
 

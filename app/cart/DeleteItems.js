@@ -14,7 +14,7 @@ export default function DeleteItems({ product }) {
         }}
       >
         {' '}
-        Delete
+        Remove
       </button>
     </div>
   );

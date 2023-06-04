@@ -2,16 +2,16 @@
 // import { cookies } from 'next/headers';
 import Image from 'next/image';
 import Link from 'next/link';
-import { products } from '../../database/products';
+import { getProducts, products } from '../../database/products';
 import styles from './page.module.scss';
 
 export const metadata = {
-  title: 'Products',
-  description: 'All products',
+  title: 'Dreams to buy',
+  description: 'Products',
 };
-export default function ProductsPage() {
-  // const allCookies = cookies().getAll();
-  // console.log(allCookies);
+
+export default async function ProductsPage() {
+  const products = await getProducts();
   return (
     <main className={styles.main}>
       <section className={styles.productsContainer}>

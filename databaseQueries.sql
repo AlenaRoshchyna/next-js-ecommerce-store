@@ -18,7 +18,7 @@ VALUES
   ('DreamScape', 'dreams', 50, 'dreamDescriptionC'),
   ('FantasiaDreamer', 'dreams', 50, 'dreamDescriptionD'),
 
--- Read products
+-- Read products in the table
 SELECT * FROM products;
 
 -- That's the first hand created database
