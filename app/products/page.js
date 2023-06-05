@@ -2,7 +2,7 @@
 // import { cookies } from 'next/headers';
 import Image from 'next/image';
 import Link from 'next/link';
-import { getProducts, products } from '../../database/products';
+import { getProducts } from '../../database/products';
 import styles from './page.module.scss';
 
 export const metadata = {

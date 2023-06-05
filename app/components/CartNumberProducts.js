@@ -8,7 +8,7 @@ export default function CartNumberProduct() {
     : parseJson(productQuantityCookie);
 
   const quantity = productQuantities.map((item) => item.quantity);
-  console.log(quantity);
+
   const totalSumOfProducts = quantity.reduce(
     (acc, currentNum) => acc + currentNum,
     0,
