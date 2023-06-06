@@ -2,7 +2,11 @@
 import { useRouter } from 'next/navigation';
 import { deleteItem } from './actions';
 
-export default function DeleteItems({ product }) {
+type Props = {
+  product: number;
+};
+
+export default function DeleteItems(props: Props) {
   const router = useRouter();
 
   return (
@@ -10,7 +14,7 @@ export default function DeleteItems({ product }) {
       <button
         formAction={async () => {
           router.refresh();
-          await deleteItem(product);
+          await deleteItem(props.product);
         }}
       >
         {' '}

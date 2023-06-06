@@ -20,13 +20,14 @@ export default async function ProductsPage() {
             <div key={`product-div-${product.id}`}>
               <Image
                 src={`/images/${product.name}.jpg`}
+                alt="product image"
                 width={172}
                 height={343}
               />
               <br />
               <Link
-                href={`/products/${product.id}`}
                 data-test-id="product-<product id>"
+                href={`/products/${product.id}`}
               >
                 {product.name}
               </Link>

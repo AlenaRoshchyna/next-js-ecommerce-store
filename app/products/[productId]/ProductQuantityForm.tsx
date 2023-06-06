@@ -6,7 +6,11 @@ import { updateQuantity } from './actions';
 
 // import styles from './ProductQuantityForm.module.scss';
 
-export default function ProductQuantityForm(props) {
+type Props = {
+  productId: number;
+};
+
+export default function ProductQuantityForm(props: Props) {
   const [quantity, setQuantity] = useState(1);
   const router = useRouter();
 
@@ -18,7 +22,7 @@ export default function ProductQuantityForm(props) {
         min="1"
         value={quantity}
         onChange={(event) => {
-          setQuantity(event.currentTarget.value);
+          setQuantity(Number(event.currentTarget.value));
         }}
       />
       <br />

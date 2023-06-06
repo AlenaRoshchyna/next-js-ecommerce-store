@@ -11,8 +11,14 @@ export const metadata = {
   description: 'Products',
 };
 
-export default async function ProductPage({ params }) {
-  const singleProduct = await getProductById(Number(params.productId)); // Convert the string into a number
+type Props = {
+  params: {
+    productId: string;
+  };
+};
+
+export default async function ProductPage(props: Props) {
+  const singleProduct = await getProductById(Number(props.params.productId)); // Convert the string into a number
 
   console.log(singleProduct);
 
@@ -25,6 +31,7 @@ export default async function ProductPage({ params }) {
       <Image
         data-test-id="product-image"
         src={`/images/${singleProduct.name}.jpg`}
+        alt="picture of the dream"
         width={286}
         height={571}
       />
