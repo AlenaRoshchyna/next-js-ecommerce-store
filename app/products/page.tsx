@@ -2,7 +2,7 @@
 // import { cookies } from 'next/headers';
 import Image from 'next/image';
 import Link from 'next/link';
-import { getProducts, products } from '../../database/products';
+import { getProducts } from '../../database/products';
 import styles from './page.module.scss';
 
 export const metadata = {
@@ -20,13 +20,14 @@ export default async function ProductsPage() {
             <div key={`product-div-${product.id}`}>
               <Image
                 src={`/images/${product.name}.jpg`}
+                alt="product image"
                 width={172}
                 height={343}
               />
               <br />
               <Link
-                href={`/products/${product.id}`}
                 data-test-id="product-<product id>"
+                href={`/products/${product.id}`}
               >
                 {product.name}
               </Link>

@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
+// import Link from 'next/link';
 import { getProductById } from '../../database/products';
 import { getQuantity } from '../products/[productId]/actions';
 import ChangeQuantityItem from './ChangeQuantityItem';
@@ -63,15 +64,17 @@ export default async function CartPage() {
             </div>
           );
         })}
-
         <div>
           Total price:
           <span data-test-id="cart-total">{calculateTotalPrice()}</span>
         </div>
-
-        {/* <Link href="/cart/checkout/" data-test-id="cart-checkout">
-          Checkout
-        </Link> */}
+        <Link
+          className={styles.link}
+          href="/cart/checkout/"
+          data-test-id="cart-checkout"
+        >
+          Checkout!
+        </Link>
       </section>
     </main>
   );

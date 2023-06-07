@@ -2,7 +2,12 @@
 import { useRouter } from 'next/navigation';
 import { addQuantity, deleteQuantity } from './actions';
 
-export default function ChangeQuantityItem({ product }) {
+type Props = {
+  product: {
+    quantity: number
+}};
+
+export default function ChangeQuantityItem(props: Props) {
   const router = useRouter();
 
   return (
@@ -10,16 +15,16 @@ export default function ChangeQuantityItem({ product }) {
       <button
         formAction={async () => {
           router.refresh();
-          await deleteQuantity(product);
+          await deleteQuantity(props.product);
         }}
       >
         -
       </button>
-      {product.quantity}
+      {props.product.quantity}
       <button
         formAction={async () => {
           router.refresh();
-          await addQuantity(product);
+          await addQuantity(props.product);
         }}
       >
         +
