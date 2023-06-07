@@ -7,7 +7,7 @@ export default function CheckOutFormPage() {
   const router = useRouter();
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
-    router.push('cart/checkout/thankYou');
+    router.push('cart/checkout/thankyou');
   };
 
   return (
