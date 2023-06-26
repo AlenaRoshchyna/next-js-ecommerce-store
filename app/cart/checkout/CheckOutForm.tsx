@@ -1,13 +1,16 @@
 'use client';
 
 import { useRouter } from 'next/navigation';
+import { clearCookies } from '../actions';
 import styles from './page.module.scss';
 
 export default function CheckOutFormPage() {
   const router = useRouter();
-  const handleSubmit = (event: React.FormEvent) => {
+  const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
-    router.push('cart/checkout/thankyou');
+    await clearCookies();
+    router.push('/cart/checkout/thankyou');
+    router.refresh();
   };
 
   return (
@@ -22,6 +25,7 @@ export default function CheckOutFormPage() {
             required
           />
         </label>
+        <dt />
         <label className={styles.label}>
           Last Name:
           <input
@@ -30,6 +34,7 @@ export default function CheckOutFormPage() {
             required
           />
         </label>
+        <dt />
         <label className={styles.label}>
           Email:
           <input
@@ -38,6 +43,7 @@ export default function CheckOutFormPage() {
             required
           />
         </label>
+        <dt />
         <label className={styles.label}>
           Adress:
           <input
@@ -46,6 +52,7 @@ export default function CheckOutFormPage() {
             required
           />
         </label>
+        <dt />
         <label className={styles.label}>
           City:
           <input
@@ -54,6 +61,7 @@ export default function CheckOutFormPage() {
             required
           />
         </label>
+        <dt />
         <label className={styles.label}>
           Postal code:
           <input
@@ -62,6 +70,7 @@ export default function CheckOutFormPage() {
             required
           />
         </label>
+        <dt />
         <label className={styles.label}>
           Country:
           <input
@@ -70,6 +79,7 @@ export default function CheckOutFormPage() {
             required
           />
         </label>
+        <dt />
         <label className={styles.label}>
           Credit card:
           <input
@@ -78,6 +88,7 @@ export default function CheckOutFormPage() {
             required
           />
         </label>
+        <dt />
         <label className={styles.label}>
           Expiration date:
           <input
@@ -86,6 +97,7 @@ export default function CheckOutFormPage() {
             required
           />
         </label>
+        <dt />
         <label className={styles.label}>
           Security code:
           <input
@@ -94,6 +106,7 @@ export default function CheckOutFormPage() {
             required
           />
         </label>
+        <dt />
 
         <button data-test-id="checkout-confirm-order">Confirm Order</button>
       </form>

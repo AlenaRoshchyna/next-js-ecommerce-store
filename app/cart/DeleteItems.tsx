@@ -12,6 +12,7 @@ export default function DeleteItems(props: Props) {
   return (
     <div>
       <button
+        data-test-id="cart-product-remove-<product id>"
         formAction={async () => {
           router.refresh();
           await deleteItem(props.product);

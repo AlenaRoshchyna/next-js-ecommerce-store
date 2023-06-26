@@ -1,7 +1,8 @@
 import Image from 'next/image';
 import Link from 'next/link';
 // import Link from 'next/link';
-import { getProductById } from '../../database/products';
+import { getProducts } from '../../database/products';
+import { combineData } from '../functions/combineData';
 import { getQuantity } from '../products/[productId]/actions';
 import ChangeQuantityItem from './ChangeQuantityItem';
 import DeleteItems from './DeleteItems';
@@ -14,18 +15,9 @@ export const metadata = {
 
 export default async function CartPage() {
   const productQuantity = await getQuantity();
+  const products = await getProducts();
 
-  const productInCart = await Promise.all(
-    productQuantity.map(async (item) => {
-      // item is my product in cookies
-      const matchingProduct = await getProductById(Number(item.id));
-
-      return {
-        ...matchingProduct,
-        quantity: item.quantity,
-      };
-    }),
-  );
+  const productInCart = combineData(productQuantity, products);
 
   function calculateTotalPrice() {
     return productInCart.reduce(
@@ -35,47 +27,73 @@ export default async function CartPage() {
   }
   let subTotalProductPrice = 0;
 
-  return (
-    <main>
-      <section className={styles.cartPage}>
-        {productInCart.map((product) => {
-          subTotalProductPrice = product.quantity * product.price;
-
-          return (
-            <div key={`product-${product.id}`} className={styles.productCart}>
-              <Image
-                alt=""
-                src={`/images/${product.name}.jpg`}
-                width={250}
-                height={250}
-              />
-              <div>Name: {product.name}</div>
-              <div>Price: {product.price}</div>
-              <div>Subtotal price: {subTotalProductPrice}</div>
-
-              {/* <div>{product.totalQuantity}</div> */}
-              <form>
-                <ChangeQuantityItem product={product} />
-              </form>
-
-              <form>
-                <DeleteItems product={product} />
-              </form>
-            </div>
-          );
-        })}
-        <div>
-          Total price:
-          <span data-test-id="cart-total">{calculateTotalPrice()}</span>
-        </div>
-        <Link
-          className={styles.link}
-          href="/cart/checkout/"
-          data-test-id="cart-checkout"
+  if (productInCart.length === 0) {
+    return <h6 className={styles.emptyCart}>The cart is empty</h6>;
+  } else {
+    return (
+      <main>
+        <section
+          className={styles.cartPage}
+          data-test-id="cart-product-quantity-<product id>"
         >
-          Checkout!
-        </Link>
-      </section>
-    </main>
-  );
+          {productInCart.map((product) => {
+            subTotalProductPrice = product.quantity * product.price;
+
+            return (
+              <div key={`product-${product.id}`} className={styles.productCart}>
+                <Image
+                  alt=""
+                  src={`/images/${product.name}.jpg`}
+                  width={120}
+                  height={250}
+                />
+                <div>Name: {product.name}</div>
+                <div>Price: {product.price}</div>
+                <div>Subtotal price: {subTotalProductPrice}</div>
+
+                {/* <div>{product.totalQuantity}</div> */}
+                <form>
+                  <ChangeQuantityItem
+                    product={product}
+                    data-test-id="cart-product-quantity-<product id>"
+                  />
+                </form>
+
+                <form>
+                  <DeleteItems
+                    product={product}
+                    data-test-id="cart-product-remove-<product id>"
+                  />
+                </form>
+              </div>
+            );
+          })}
+          <div>
+            Total price:
+            <span data-test-id="cart-total">{calculateTotalPrice()}</span>
+          </div>
+          <Link
+            className={styles.link}
+            href="/cart/checkout/"
+            data-test-id="cart-checkout"
+          >
+            Checkout!
+          </Link>
+        </section>
+      </main>
+    );
+  }
 }
+
+// Promise.all is good when we have a big database, cause than we don't have to load all the products
+// const productInCart = await Promise.all(
+//   productQuantity.map(async (item) => {
+//     // item is my product in cookies
+//     const matchingProduct = await getProductById(Number(item.id));
+
+//     return {
+//       ...matchingProduct,
+//       quantity: item.quantity,
+//     };
+//   }),
+// );

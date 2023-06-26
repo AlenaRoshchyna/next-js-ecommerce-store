@@ -2,13 +2,25 @@
 //   background-color: black;
 //   height: 100%;
 // }
-
+.main {
+  min-height: 100vh;
+  background-color: black;
+}
 .productsContainer {
   display: flex;
   align-items: center;
   background-color: black;
   justify-content: center;
-  padding: 100px;
+  padding: 40px;
   gap: 100px;
-  min-height: 100vh;
+}
+
+.titel {
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  color: white;
+  background-color: black;
+
+  padding-top: 140px;
 }

@@ -37,12 +37,14 @@ export default function RootLayout({ children }: LayoutProps) {
                 <Link href="/about">About</Link>
               </li>
               <li>
-                <Link href="/products">Products</Link>
+                <Link href="/products" data-test-id="products-link">
+                  Products
+                </Link>
               </li>
               <li>
-                <Link href="/cart">
+                <Link href="/cart" data-test-id="cart-link">
                   {' '}
-                  <FaOpencart /> <CartNumberProduct />
+                  <FaOpencart /> <CartNumberProduct data-test-id="cart-count" />
                 </Link>
               </li>
             </ul>

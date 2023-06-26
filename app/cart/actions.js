@@ -46,3 +46,13 @@ export async function deleteQuantity(products) {
 
   await cookies().set('cart', JSON.stringify(productQuantities));
 }
+
+// clear cookies after pressing checkout button
+export async function clearCookies() {
+  await cookies().set({
+    name: 'cart',
+    value: '',
+    expires: new Date('2016-10-05'),
+    path: '/',
+  });
+}

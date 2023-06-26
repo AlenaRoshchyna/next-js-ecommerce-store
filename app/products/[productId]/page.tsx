@@ -20,8 +20,6 @@ type Props = {
 export default async function ProductPage(props: Props) {
   const singleProduct = await getProductById(Number(props.params.productId)); // Convert the string into a number
 
-  console.log(singleProduct);
-
   if (!singleProduct) {
     notFound();
   }
