@@ -41,12 +41,7 @@ export default async function CartPage() {
 
             return (
               <div key={`product-${product.id}`} className={styles.productCart}>
-                <Image
-                  alt=""
-                  src={`/images/${product.name}.jpg`}
-                  width={120}
-                  height={250}
-                />
+                <Image />
                 <div>Name: {product.name}</div>
                 <div>Price: {product.price}</div>
                 <div>Subtotal price: {subTotalProductPrice}</div>

@@ -41,7 +41,7 @@ export async function deleteQuantity(products) {
     return product.id === products.id;
   });
 
-  // tenary operator shows that everything before ? is the condition and after ? comes the true statement. If decrease.quantity is lover than 1 it will show 1, else it will decrease the quantitu by 1
+  // tenary operator shows that everything before question sign (?) is the condition and after ? comes the true statement. If decrease.quantity is lover than 1 it will show 1, else it will decrease the quantitu by 1
   decrease.quantity = decrease.quantity - 1 < 1 ? 1 : decrease.quantity - 1;
 
   await cookies().set('cart', JSON.stringify(productQuantities));
