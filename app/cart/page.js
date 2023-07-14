@@ -46,7 +46,7 @@ export default async function CartPage() {
                 <div>Price: {product.price}</div>
                 <div>Subtotal price: {subTotalProductPrice}</div>
 
-                {/* <div>{product.totalQuantity}</div> */}
+                {/* <div>{product.totalQuantity}</div> - for more */}
                 <form>
                   <ChangeQuantityItem
                     product={product}
