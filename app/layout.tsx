@@ -1,5 +1,4 @@
 import './globals.scss';
-import { Inter } from 'next/font/google';
 import Image from 'next/image';
 import Link from 'next/link';
 import { FaOpencart } from 'react-icons/fa';
@@ -7,8 +6,6 @@ import logo from '../public/logo.png';
 import CartNumberProduct from './components/CartNumberProducts';
 import { CookieBanner } from './components/CookieBanner';
 import styles from './layout.module.scss';
-
-const inter = Inter({ subsets: ['latin'] });
 
 export const metadata = {
   title: 'Dreams',
