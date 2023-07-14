@@ -1,3 +1,4 @@
+import 'server-only';
 import { headers } from 'next/headers';
 import postgres, { Sql } from 'postgres';
 import { setEnvironmentVariables } from '../util/config.mjs';
